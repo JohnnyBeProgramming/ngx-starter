@@ -10,7 +10,11 @@ import { AppComponent } from './app.component';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 
-export const routes = [{ path: '', loadChildren: '@test/home' }];
+export const routes = [
+  { path: '', loadChildren: '@test/home' },
+  { path: 'alpha', loadChildren: '@test/alpha' },
+  { path: 'beta', loadChildren: '@test/beta' },
+];
 
 @NgModule({
   declarations: [AppComponent],
