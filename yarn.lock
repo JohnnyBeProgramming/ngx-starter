@@ -314,6 +314,20 @@
     tree-kill "1.2.0"
     webpack-sources "1.2.0"
 
+"@ngx-translate/core@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-11.0.1.tgz#cecefad41f06368f5859dac48fec8fcc4485615f"
+  integrity sha512-nBCa1ZD9fAUY/3eskP3Lql2fNg8OMrYIej1/5GRsfcutx9tG/5fZLCv9m6UCw1aS+u4uK/vXjv1ctG/FdMvaWg==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-translate/http-loader@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-4.0.0.tgz#8a555248ad4b7d513460fcec9da25b0447962f1d"
+  integrity sha512-x8LumqydWD7eX9yQTAVeoCM9gFUIGVTUjZqbxdAUavAA3qVnk9wCQux7iHLPXpydl8vyQmLoPQR+fFU+DUDOMA==
+  dependencies:
+    tslib "^1.9.0"
+
 "@ngxs/devtools-plugin@^3.4.3":
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/@ngxs/devtools-plugin/-/devtools-plugin-3.4.3.tgz#437e8599d24babee2c08cdd93a789585248a1a5c"
@@ -4365,6 +4379,13 @@ make-fetch-happen@^4.0.1:
     socks-proxy-agent "^4.0.0"
     ssri "^6.0.0"
 
+make-plural@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/make-plural/-/make-plural-4.3.0.tgz#f23de08efdb0cac2e0c9ba9f315b0dff6b4c2735"
+  integrity sha512-xTYd4JVHpSCW+aqDof6w/MebaMVNTVYBZhbB/vi513xXdiPT92JMVCo0Jq8W2UZnzYRFeVbQiQ+I25l13JuKvA==
+  optionalDependencies:
+    minimist "^1.2.0"
+
 map-age-cleaner@^0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/map-age-cleaner/-/map-age-cleaner-0.1.3.tgz#7d583a7306434c055fe474b0f45078e6e1b4b92a"
@@ -4452,6 +4473,20 @@ merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
+
+messageformat-parser@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/messageformat-parser/-/messageformat-parser-4.1.0.tgz#2bd21fd08db7233d0ef2af6d2c878fef2750c526"
+  integrity sha512-L/9SdYyDOdZD1BAQILkH/xrkHzM3x+99Peu9JnE8wWM6e0KvVz3iRobLNmTgz0LxLViHAX5YYsvDIpuJrIljsg==
+
+messageformat@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/messageformat/-/messageformat-2.1.0.tgz#9edbd0d3e081c4f0aed5fc6710da94b5edc94924"
+  integrity sha512-AfH57I4eLJNtqpX7qlGfaWAQFjsImADhKzwJuNWJwjCQhWB7p4IgH8C5/Z9PUeRZsby3/lCPYJmVRYoXfi4Qbw==
+  dependencies:
+    make-plural "^4.3.0"
+    messageformat-parser "^4.1.0"
+    reserved-words "^0.1.2"
 
 methods@~1.1.2:
   version "1.1.2"
@@ -4725,6 +4760,13 @@ ngrx-store-freeze@0.2.4:
   integrity sha512-90awpbbMa/x2H81eWWYniyli3LJ1PZU/FaztL10d9Rp/4kw2+97pqyLjdxSPxcOv9St//m9kfuWZ7gyoVDjgcg==
   dependencies:
     deep-freeze-strict "^1.1.1"
+
+ngx-translate-messageformat-compiler@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/ngx-translate-messageformat-compiler/-/ngx-translate-messageformat-compiler-4.4.0.tgz#511d6e347962c74a3c393a7d633c563db55468c6"
+  integrity sha512-cLXaaPqYCDy3oclsz+FlSZe91pBsGxxlxa/hc+ZDd6iyvyojAWq7dSSgP27wtBwaK6NJXbuGcCVCgL/Ppd+sLg==
+  dependencies:
+    tslib "^1.9.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -5929,6 +5971,11 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
+
+reserved-words@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/reserved-words/-/reserved-words-0.1.2.tgz#00a0940f98cd501aeaaac316411d9adc52b31ab1"
+  integrity sha1-AKCUD5jNUBrqqsMWQR2a3FKzGrE=
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

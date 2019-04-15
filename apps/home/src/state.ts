@@ -53,7 +53,6 @@ export class HomeState implements NgxsOnInit {
   private getInitialState(): Observable<Partial<HomeStateModel>> {
     return this.activatedRoute.queryParams.pipe(
       switchMap(queryParams => {
-        console.log(' --> queryParams', queryParams);
         return of({
           name: queryParams['name'] || 'home'
         });
