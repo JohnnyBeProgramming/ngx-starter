@@ -1,0 +1,14 @@
+<div style="text-align:center">
+  <h1>Welcome to {{ title }}!</h1>
+  <div>
+    Quick Links
+    | <a [routerLink]="''">Home</a>
+    <!--
+    | <a [routerLink]="'/alpha'">Alpha</a>
+    | <a [routerLink]="'/beta'">Beta</a>
+    -->
+  </div>
+</div>
+<div style="margin: 20px; border: dashed 1px silver;">
+  <router-outlet></router-outlet>
+</div>
