@@ -13,7 +13,7 @@ import {
 } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { InitTranslationService } from './common';
+import { InitTranslationService, MockedI18nModule } from './common';
 
 export function TranslateLoaderForHome(http: HttpClient) {
   const target = 'home';
@@ -35,18 +35,20 @@ export function TranslateLoaderForHome(http: HttpClient) {
         deps: [HttpClient]
       },
       isolate: true
-    })
+    }),
+    MockedI18nModule
   ],
   providers: [],
   bootstrap: [HomeFeatureComponent]
 })
 export class FeatureModule {
+  /*
   constructor(translate: TranslateService) {
     const lang = 'en';
-    console.log('Load translations for', [lang]);
     translate.setDefaultLang(lang);
     translate.use(lang);
   }
+  */
 }
 
 export default FeatureModule;

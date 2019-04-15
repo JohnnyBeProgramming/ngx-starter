@@ -23,8 +23,8 @@ import {
 import {
   InitTranslationService,
   BootstrapTranslationService,
-  CommonAppModule,
-  TranslateLoaderForCommon
+  MockedI18nModule,
+  TranslateLoaderForFeature
 } from '../common';
 
 export const routes = [{ path: '', loadChildren: '@test/home' }];
@@ -40,10 +40,11 @@ export const routes = [{ path: '', loadChildren: '@test/home' }];
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production
     }),
+    /*
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslateLoaderForCommon,
+        useFactory: TranslateLoaderForFeature('common'),
         deps: [HttpClient]
       },
       compiler: {
@@ -52,7 +53,8 @@ export const routes = [{ path: '', loadChildren: '@test/home' }];
       },
       isolate: true
     }),
-    CommonAppModule.forRoot(),
+    */
+    MockedI18nModule.forRoot(),
   ],
   providers: [BootstrapTranslationService],
   bootstrap: [AppComponent]
