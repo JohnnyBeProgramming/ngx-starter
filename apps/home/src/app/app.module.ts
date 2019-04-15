@@ -1,3 +1,4 @@
+import { I18nModule } from '@test/i18n';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -20,12 +21,6 @@ import {
   TranslateMessageFormatCompiler,
   MESSAGE_FORMAT_CONFIG
 } from 'ngx-translate-messageformat-compiler';
-import {
-  InitTranslationService,
-  BootstrapTranslationService,
-  MockedI18nModule,
-  TranslateLoaderForFeature
-} from '../common';
 
 export const routes = [{ path: '', loadChildren: '@test/home' }];
 
@@ -34,29 +29,15 @@ export const routes = [{ path: '', loadChildren: '@test/home' }];
   imports: [
     BrowserModule,
     HttpClientModule,
+
     NxModule.forRoot(),
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
     NgxsModule.forRoot([], { developmentMode: !environment.production }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production
     }),
-    /*
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: TranslateLoaderForFeature('common'),
-        deps: [HttpClient]
-      },
-      compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
-      },
-      isolate: true
-    }),
-    */
-    MockedI18nModule.forRoot(),
+    I18nModule.forRoot()
   ],
-  providers: [BootstrapTranslationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
