@@ -17,31 +17,6 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-export function TranslateLoaderForFeature(componentName: string) {
-  return (http: HttpClient) => {
-    console.log('Set translations for', [componentName]);
-    return new TranslateHttpLoader(
-      http,
-      `/assets/lang/${componentName}/`,
-      '.json'
-    );
-  };
-}
-
-export function InitTranslationService(translate: TranslateService) {
-  return () => {
-    const lang = 'en';
-    if (translate) {
-      console.log('Set language:', lang);
-      translate.setDefaultLang(lang);
-      translate.use(lang);
-      return Promise.resolve(lang);
-    } else {
-      return Promise.reject(new Error('TranslateService not found!'));
-    }
-  };
-}
-
 export interface I18nConfig {
   componentName: string;
 }
@@ -62,22 +37,7 @@ export class I18nConfigService {
   declarations: [],
   imports: [
     CommonModule,
-    /*
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: TranslateLoaderForFeature('common'),
-        deps: [HttpClient]
-      },
-      compiler: {
-        provide: TranslateCompiler,
-        useClass: TranslateMessageFormatCompiler
-      },
-      isolate: false
-    })
-    */
     TranslateModule.forRoot({
-      loader: I18nModule.FeatureTranslateLoader,
       compiler: {
         provide: TranslateCompiler,
         useClass: TranslateMessageFormatCompiler
@@ -109,6 +69,9 @@ export class I18nModule {
             componentName: 'common'
           }
         },
+
+        // Load the feaature translations using the config defined above
+        I18nModule.FeatureTranslateLoader,
       ]
     };
   }
@@ -123,7 +86,10 @@ export class I18nModule {
         {
           provide: I18nConfigToken,
           useValue: config
-        }
+        },
+
+        // Load the feaature translations using the config defined above
+        I18nModule.FeatureTranslateLoader,
       ]
     };
   }

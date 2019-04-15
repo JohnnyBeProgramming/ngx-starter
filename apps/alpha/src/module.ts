@@ -1,54 +1,30 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HomeFeatureComponent } from './app/home-feature/home-feature.component';
-import { HomeState } from './state';
+import { AlphaState } from './state';
 import { NgxsModule } from '@ngxs/store';
-import {
-  TranslateModule,
-  TranslateLoader,
-  TranslateService
-} from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { InitTranslationService, MockedI18nModule } from './common';
-
-export function TranslateLoaderForHome(http: HttpClient) {
-  const target = 'home';
-  console.log('Set translations for', [target]);
-  return new TranslateHttpLoader(http, `/assets/lang/${target}/`, '.json');
-}
+import { TranslateModule } from '@ngx-translate/core';
+import { I18nModule } from '@test/i18n';
+import { AlphaFeatureComponent } from './app/alpha-feature/alpha-feature.component';
 
 @NgModule({
-  declarations: [HomeFeatureComponent],
+  declarations: [AlphaFeatureComponent],
   imports: [
     CommonModule,
+
     NxModule.forRoot(),
-    RouterModule.forChild([{ path: '', component: HomeFeatureComponent }]),
-    NgxsModule.forFeature([HomeState]),
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: TranslateLoaderForHome,
-        deps: [HttpClient]
-      },
-      isolate: true
-    }),
-    MockedI18nModule
+    RouterModule.forChild([{ path: '', component: AlphaFeatureComponent }]),
+    NgxsModule.forFeature([AlphaState]),
+    TranslateModule.forChild(),
+    I18nModule.forFeature({
+      componentName: 'alpha'
+    })
   ],
   providers: [],
-  bootstrap: [HomeFeatureComponent]
+  bootstrap: [AlphaFeatureComponent]
 })
-export class FeatureModule {
-  /*
-  constructor(translate: TranslateService) {
-    const lang = 'en';
-    translate.setDefaultLang(lang);
-    translate.use(lang);
-  }
-  */
-}
+export class FeatureModule {}
 
 export default FeatureModule;

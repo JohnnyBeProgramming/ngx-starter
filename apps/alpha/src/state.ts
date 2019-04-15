@@ -4,32 +4,27 @@ import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 
-export interface HomeStateModel {
-  name: string;
+export interface AlphaStateModel {
+  counter: number;
 }
 
 export class InitState {
-  public static readonly type = '[home] Init State';
-  constructor(public initialState: Partial<HomeStateModel>) {}
+  public static readonly type = '[alpha] Init State';
+  constructor(public initialState: Partial<AlphaStateModel>) {}
 }
 
-export class SetName {
-  public static readonly type = '[home] Set Name';
-  constructor(public name: string) {}
-}
-
-@State<HomeStateModel>({
-  name: 'home'
+@State<AlphaStateModel>({
+  name: 'alpha'
 })
-export class HomeState implements NgxsOnInit {
+export class AlphaState implements NgxsOnInit {
   constructor(private activatedRoute: ActivatedRoute) {}
 
   @Selector()
-  static getName(state: HomeStateModel) {
-    return state.name;
+  static getCounter(state: AlphaStateModel) {
+    return state.counter;
   }
 
-  ngxsOnInit({ dispatch }: StateContext<HomeStateModel>) {
+  ngxsOnInit({ dispatch }: StateContext<AlphaStateModel>) {
     this.getInitialState()
       .pipe(first())
       .subscribe({
@@ -39,25 +34,13 @@ export class HomeState implements NgxsOnInit {
 
   // Reducers
   @Action(InitState)
-  init({ patchState }: StateContext<HomeStateModel>, { initialState }) {
+  init({ patchState }: StateContext<AlphaStateModel>, { initialState }) {
     patchState(initialState);
   }
 
-  @Action(SetName)
-  setName({ patchState }: StateContext<HomeStateModel>, { name }) {
-    patchState({
-      name
+  private getInitialState(): Observable<Partial<AlphaStateModel>> {
+    return of({
+      counter: 0
     });
   }
-
-  private getInitialState(): Observable<Partial<HomeStateModel>> {
-    return this.activatedRoute.queryParams.pipe(
-      switchMap(queryParams => {
-        return of({
-          name: queryParams['name'] || 'home'
-        });
-      })
-    );
-  }
-
 }
