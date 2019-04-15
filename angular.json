@@ -94,32 +94,6 @@
         }
       }
     },
-    "home-e2e": {
-      "root": "apps/home-e2e",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "apps/home-e2e/protractor.conf.js",
-            "devServerTarget": "home:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "home:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/home-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "alpha": {
       "root": "apps/alpha/",
       "sourceRoot": "apps/alpha/src",
@@ -211,32 +185,6 @@
         }
       }
     },
-    "alpha-e2e": {
-      "root": "apps/alpha-e2e",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "apps/alpha-e2e/protractor.conf.js",
-            "devServerTarget": "alpha:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "alpha:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/alpha-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
     "beta": {
       "root": "apps/beta/",
       "sourceRoot": "apps/beta/src",
@@ -323,32 +271,6 @@
               "apps/beta/tsconfig.app.json",
               "apps/beta/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "beta-e2e": {
-      "root": "apps/beta-e2e",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "apps/beta-e2e/protractor.conf.js",
-            "devServerTarget": "beta:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "beta:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/beta-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**"]
           }
         }
