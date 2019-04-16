@@ -16,10 +16,7 @@ import { I18nModule } from '@test/i18n';
     NxModule.forRoot(),
     RouterModule.forChild([{ path: '', component: HomeFeatureComponent }]),
     NgxsModule.forFeature([HomeState]),
-    TranslateModule.forChild({
-      loader: I18nModule.FeatureTranslateLoader,
-      isolate: true
-    }),
+    TranslateModule.forChild(),
     I18nModule.forFeature({
       componentName: 'home'
     })

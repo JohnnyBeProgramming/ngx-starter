@@ -11,19 +11,10 @@
     "home": {
       "tags": []
     },
-    "home-e2e": {
-      "tags": []
-    },
     "alpha": {
       "tags": []
     },
-    "alpha-e2e": {
-      "tags": []
-    },
     "beta": {
-      "tags": []
-    },
-    "beta-e2e": {
       "tags": []
     },
     "i18n": {

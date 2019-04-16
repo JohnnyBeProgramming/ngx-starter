@@ -81,7 +81,7 @@ export class I18nModule {
     return {
       ngModule: I18nModule,
       providers: [
-        // Define the feature specifi translation options
+        // Define the feature specific translation options
         I18nConfigService,
         {
           provide: I18nConfigToken,
