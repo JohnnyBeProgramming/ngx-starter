@@ -306,6 +306,26 @@
           "styleext": "scss"
         }
       }
+    },
+    "common": {
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "projectType": "library",
+      "prefix": "test",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/common/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -16,7 +16,8 @@
       "@test/i18n": ["libs/i18n/src/index.ts"],
       "@test/home": ["apps/home/src/module.ts"],
       "@test/alpha": ["apps/alpha/src/module.ts"],
-      "@test/beta": ["apps/beta/src/module.ts"]
+      "@test/beta": ["apps/beta/src/module.ts"],
+      "@test/common": ["libs/common/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

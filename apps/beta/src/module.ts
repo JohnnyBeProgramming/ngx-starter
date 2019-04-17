@@ -8,6 +8,7 @@ import { NgxsModule } from '@ngxs/store';
 import { TranslateModule } from '@ngx-translate/core';
 import { I18nModule } from '@test/i18n';
 import { BetaFeatureComponent } from './app/beta-feature/beta-feature.component';
+import { AppCommonModule } from '@test/common';
 
 @NgModule({
   declarations: [BetaFeatureComponent],
@@ -16,11 +17,13 @@ import { BetaFeatureComponent } from './app/beta-feature/beta-feature.component'
 
     NxModule.forRoot(),
     RouterModule.forChild([{ path: '', component: BetaFeatureComponent }]),
-    NgxsModule.forFeature([BetaState]),
-    TranslateModule.forChild(),
-    I18nModule.forFeature({
-      componentName: 'beta'
-    })
+    AppCommonModule.forFeature({
+      name: 'beta',
+      i18n: {
+        componentName: 'beta'
+      },
+      states: [BetaState]
+    }),
   ],
   providers: [],
   bootstrap: [BetaFeatureComponent]

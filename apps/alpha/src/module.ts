@@ -1,3 +1,4 @@
+import { AppCommonModule } from '@test/common';
 import { NgModule } from '@angular/core';
 
 import { NxModule } from '@nrwl/nx';
@@ -14,13 +15,19 @@ import { AlphaFeatureComponent } from './app/alpha-feature/alpha-feature.compone
   imports: [
     CommonModule,
 
+    AppCommonModule.forFeature({
+      name: 'alpha',
+    }),
+
     NxModule.forRoot(),
     RouterModule.forChild([{ path: '', component: AlphaFeatureComponent }]),
-    NgxsModule.forFeature([AlphaState]),
-    TranslateModule.forChild(),
-    I18nModule.forFeature({
-      componentName: 'alpha'
-    })
+    AppCommonModule.forFeature({
+      name: 'alpha',
+      i18n: {
+        componentName: 'alpha'
+      },
+      states: [AlphaState]
+    }),
   ],
   providers: [],
   bootstrap: [AlphaFeatureComponent]

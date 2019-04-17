@@ -1,3 +1,4 @@
+import { AppCommonModule } from '@test/common';
 import { NgModule } from '@angular/core';
 
 import { NxModule } from '@nrwl/nx';
@@ -13,13 +14,16 @@ import { I18nModule } from '@test/i18n';
   declarations: [HomeFeatureComponent],
   imports: [
     CommonModule,
+
     NxModule.forRoot(),
     RouterModule.forChild([{ path: '', component: HomeFeatureComponent }]),
-    NgxsModule.forFeature([HomeState]),
-    TranslateModule.forChild(),
-    I18nModule.forFeature({
-      componentName: 'home'
-    })
+    AppCommonModule.forFeature({
+      name: 'home',
+      i18n: {
+        componentName: 'home'
+      },
+      states: [HomeState]
+    }),
   ],
   providers: [],
   bootstrap: [HomeFeatureComponent]

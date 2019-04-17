@@ -1,3 +1,4 @@
+import { AppCommonModule } from '@test/common';
 import { I18nModule } from '@test/i18n';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,11 +21,12 @@ export const routes = [{ path: '', loadChildren: '@test/beta' }];
 
     NxModule.forRoot(),
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
-    NgxsModule.forRoot([], { developmentMode: !environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production
-    }),
-    I18nModule.forRoot()
+    AppCommonModule.forRoot({
+      name: 'root',
+      //routes: routes,
+      //routeConfig: { initialNavigation: 'enabled' },
+      environment
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

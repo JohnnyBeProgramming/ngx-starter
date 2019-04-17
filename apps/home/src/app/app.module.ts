@@ -9,11 +9,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
+import { AppCommonModule } from '@test/common';
 
 export const routes = [
   { path: '', loadChildren: '@test/home' },
   { path: 'alpha', loadChildren: '@test/alpha' },
-  { path: 'beta', loadChildren: '@test/beta' },
+  { path: 'beta', loadChildren: '@test/beta' }
 ];
 
 @NgModule({
@@ -21,14 +22,15 @@ export const routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-
     NxModule.forRoot(),
+
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
-    NgxsModule.forRoot([], { developmentMode: !environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production
-    }),
-    I18nModule.forRoot()
+    AppCommonModule.forRoot({
+      name: 'root',
+      //routes: routes,
+      //routeConfig: { initialNavigation: 'enabled' },
+      environment
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
