@@ -57,9 +57,39 @@ export class AppCommonModule {
   static forRoot(config?: AppModuleRootConfig): ModuleWithProviders {
     // Return a module that indirectly exposes AppCommonModule, with the
     // imported modules initialized using the method `forRoot()`
+
     return {
       ngModule: AppRootModule, // tslint:disable-line
-      providers: AppCommonModule.getRootProvidersFor(config || { name: 'root' })
+      providers: [
+        // Declare the app module config
+        {
+          provide: AppModuleConfigToken,
+          useValue: config
+        },
+
+        ...(config.routes
+          ? [
+              {
+                provide: ANALYZE_FOR_ENTRY_COMPONENTS,
+                multi: true,
+                useValue: config.routes
+              },
+              { provide: ROUTES, multi: true, useValue: config.routes }
+            ]
+          : []),
+
+        ...(config.i18n
+          ? [
+              {
+                provide: I18nConfigToken,
+                useValue: config.i18n
+              }
+            ]
+          : []),
+
+        ...(config.states ? NgxsModule.forFeature(config.states).providers : [])
+
+      ]
     };
   }
 
@@ -71,7 +101,36 @@ export class AppCommonModule {
     // imported modules initialized using the method `forChild()` or `forFeature()`
     return {
       ngModule: AppFeatureModule, // tslint:disable-line
-      providers: AppCommonModule.getProvidersFor(config)
+      providers: [
+        // Declare the app module config
+        {
+          provide: AppModuleConfigToken,
+          useValue: config
+        },
+
+        ...(config.routes
+          ? [
+              {
+                provide: ANALYZE_FOR_ENTRY_COMPONENTS,
+                multi: true,
+                useValue: config.routes
+              },
+              { provide: ROUTES, multi: true, useValue: config.routes }
+            ]
+          : []),
+
+        ...(config.i18n
+          ? [
+              {
+                provide: I18nConfigToken,
+                useValue: config.i18n
+              }
+            ]
+          : []),
+
+        ...(config.states ? NgxsModule.forFeature(config.states).providers : [])
+
+      ]
     };
   }
 
@@ -174,7 +233,7 @@ export class AppRootModule {
     I18nModule.forFeature({
       componentName: 'common'
     }),
-    NgxsModule.forFeature([]),
+    NgxsModule.forFeature([])
     // RouterModule.forChild([{ path: '', component: HomeFeatureComponent }]),
   ],
   exports: [AppCommonModule, TranslateModule, I18nModule, NgxsModule]
